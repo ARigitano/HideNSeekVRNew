@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using ExitGames.Client.Photon;
 using Photon.Realtime;
+using HNS.Core;
 
 public class PlayersManager : MonoBehaviour, IOnEventCallback
 {
