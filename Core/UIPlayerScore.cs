@@ -5,30 +5,53 @@ using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class UIPlayerScore : MonoBehaviourPunCallbacks
+namespace HNS.Core
 {
-    public TextMeshProUGUI playerName;
-    public TextMeshProUGUI playerScore;
-    public TextMeshProUGUI playerStatus;
-
-    Player player;
-
-    public void SetUp(Player _player)
+    /// <summary>
+    /// Displays the score and status of a player.
+    /// </summary>
+    public class UIPlayerScore : MonoBehaviourPunCallbacks
     {
-        player = _player;
-        playerName.text = _player.NickName;
-    }
+        /// <summary>
+        /// Text for the player's name.
+        /// </summary>
+        public TextMeshProUGUI playerName;
+        /// <summary>
+        /// Text for the player's score.
+        /// </summary>
+        public TextMeshProUGUI playerScore;
+        /// <summary>
+        /// Text for the player status (mouse, cat or caught).
+        /// </summary>
+        public TextMeshProUGUI playerStatus;
 
-    public override void OnPlayerLeftRoom(Player otherPlayer)
-    {
-        if(player == otherPlayer)
+        Player player;
+
+        /// <summary>
+        /// Initializes the score UI.
+        /// </summary>
+        /// <param name="_player">The player for this UI</param>
+        public void SetUp(Player _player)
+        {
+            player = _player;
+            playerName.text = _player.NickName;
+        }
+
+        /// <summary>
+        /// Called when a player leaves the room.
+        /// </summary>
+        /// <param name="otherPlayer">The player that left the room</param>
+        public override void OnPlayerLeftRoom(Player otherPlayer)
+        {
+            if (player == otherPlayer)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public override void OnLeftRoom()
         {
             Destroy(gameObject);
         }
-    }
-
-    public override void OnLeftRoom()
-    {
-        Destroy(gameObject);
     }
 }
