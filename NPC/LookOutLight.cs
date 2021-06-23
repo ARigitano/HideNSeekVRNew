@@ -23,8 +23,6 @@ namespace HNS.NPC
         {
             if (other.CompareTag("Head"))
             {
-                Debug.Log("Head found");
-
                 if (_teleportPosition != null)
                 {
                     ViveManager.Instance.player.transform.position = _teleportPosition.position;

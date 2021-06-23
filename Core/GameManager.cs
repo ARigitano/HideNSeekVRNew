@@ -40,7 +40,7 @@ namespace HNS.Core
         /// <summary>
         /// Prefab for the cat button. OBSOLETE?
         /// </summary>
-        public GameObject catButtonPrefab;
+        //public GameObject catButtonPrefab;
         /// <summary>
         /// Maximum number of cat buttons that can spawn during a game.
         /// </summary>
@@ -56,7 +56,7 @@ namespace HNS.Core
         /// <summary>
         /// Instance of the cat button. OBSOLETE?
         /// </summary>
-        public GameObject instantiatedCatButton;
+        //public GameObject instantiatedCatButton;
         /// <summary>
         /// The button that transforms a player into a cat. NEW SYSTEM 
         /// </summary>
@@ -114,7 +114,7 @@ namespace HNS.Core
         /// <summary>
         /// Instantiate the cat button. OBSOLETE?
         /// </summary>
-        [PunRPC]
+        /*[PunRPC]
         public void InstantianteBallCat()
         {
             //random position for ball
@@ -127,10 +127,11 @@ namespace HNS.Core
             instantiatedCatButton = (GameObject)PhotonNetwork.Instantiate(catButtonPrefab.name, instantiatedPosition, Quaternion.identity, 0);
 
             //recursive instantiateballcat if ball cat is in collider
-        }
+        }*/
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log("start sphere touched");
             if (other.CompareTag("Hand") /*&& ismaster*/ && !hasStarted)
             {
                 //if a player's hand touches the start button.
